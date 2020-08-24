@@ -1,5 +1,8 @@
 {
     "name": "@comlink/frontend",
     "version": "0.0.0",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "typescript": "^4.0.2"
+    }
 }

@@ -1,0 +1,20 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "rootDir": "./src/",
+        "baseUrl": ".",
+        "paths": {
+            "@comlink/framework/*": [
+                "../framework/*"
+            ]
+        },
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
+    },
+    "references": [
+        {
+            "path": "../framework/tsconfig.json"
+        }
+    ]
+}
