@@ -2,5 +2,8 @@
     "name": "root",
     "version": "0.0.0",
     "license": "MIT",
-    "private": true
+    "private": true,
+    "devDependencies": {
+        "prettier": "^2.1.0"
+    }
 }
