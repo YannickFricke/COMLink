@@ -4,3 +4,4 @@ dist
 .idea
 database.db
 tsconfig.tsbuildinfo
+yarn-error.log
