@@ -1,0 +1,14 @@
+{
+    "name": "@comlink/framework",
+    "version": "0.0.0",
+    "scripts": {
+        "build": "tsc",
+        "build:watch": "tsc --watch"
+    },
+    "dependencies": {
+        "typeorm": "^0.2.25"
+    },
+    "devDependencies": {
+        "typescript": "^3.9.7"
+    }
+}

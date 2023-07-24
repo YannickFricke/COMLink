@@ -1,0 +1,34 @@
+image: node:latest
+
+stages:
+    - build
+    - publish
+
+cache:
+    paths:
+        - node_modules/
+
+build:
+    stage: build
+    script:
+        - apt-get update
+        - apt-get install -y zip
+        - yarn workspace @comlink/backend remove @h.schulz/socketio-auth-typescript
+        - yarn workspace @comlink/backend add --ignore-scripts @h.schulz/socketio-auth-typescript
+        - yarn workspace @comlink/framework run build
+        - yarn workspace @comlink/frontend run build
+        - yarn workspace @comlink/obsclient run build
+        - yarn workspace @comlink/backend run build
+        - zip -q -9 --exclude "*.cache*" -r packaged.zip .
+
+    artifacts:
+        paths:
+            - packaged.zip
+
+publish:
+    image: inetprocess/gitlab-release
+    stage: publish
+    only:
+        - tags
+    script:
+        - gitlab-release packaged.zip

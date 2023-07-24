@@ -1,0 +1,24 @@
+version: '3'
+services:
+    comlink:
+        image: yfricke/comlink
+        container_name: comlink
+        restart: unless-stopped
+        networks:
+            - web
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        ports:
+            - '3000:3000'
+        volumes:
+            - './packages/backend/data/:/app/packages/backend/data/'
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.http.routers.comlink.rule=Host(`comlink.apps.yannickfricke.dev`)'
+            - 'traefik.http.routers.comlink.entrypoints=websecure'
+            - 'traefik.http.routers.comlink.tls.certresolver=acmeresolver'
+
+networks:
+    web:
+        external: true
